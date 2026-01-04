@@ -15,6 +15,7 @@ A structured, hands-on learning repository for mastering Generative AI fundament
 | -------------------------------------------- | ---------------------------------------------------------------------------- | ----------------- |
 | Introduction to Generative AI and Agentic AI | GenAI fundamentals, Text/Image/Audio/Video models, Agentic AI                | ⭐ Beginner       |
 | Gen AI: Foundation                           | LLM internals, Model parameters, Vector DBs & RAG, Tech stack, App lifecycle | ⭐⭐ Intermediate |
+| Gen AI: Vector Database                      | Vector DBs, Embeddings, Similarity metrics, ChromaDB, CRUD, Filtering        | ⭐⭐ Intermediate |
 
 ---
 
@@ -43,6 +44,20 @@ step-into-GenAI/
 │   │   └── 05-app-development-lifecycle.md # Build, deploy, monitor
 │   └── notebooks/
 │       └── key_params.ipynb           # 📓 LLM parameter exploration
+│
+├── 💾 Gen AI: Vector Database/
+│   ├── README.md                      # Module index
+│   ├── docs/
+│   │   ├── 01-what-is-vector-database.md  # Vector DB fundamentals, embeddings
+│   │   ├── 02-similarity-metrics.md       # Euclidean, Cosine, Dot product
+│   │   ├── 03-popular-vector-databases.md # ChromaDB, Pinecone, Milvus, Qdrant
+│   │   ├── 04-chromadb-basics.md          # Getting started with ChromaDB
+│   │   ├── 05-crud-operations.md          # Create, Read, Update, Delete
+│   │   └── 06-metadata-filtering.md       # Advanced querying & filtering
+│   └── notebooks/
+│       ├── 1_chromadb_basics.ipynb        # 📓 ChromaDB fundamentals
+│       ├── 2_add_update_delete.ipynb      # 📓 CRUD operations
+│       └── 3_metadata_filtering.ipynb     # 📓 Advanced filtering
 │
 └── README.md                          # You are here
 ```
@@ -74,6 +89,18 @@ step-into-GenAI/
 │  └──────────────┘   └──────────────┘   └──────────────┘   └──────────────┘  │
 │                                                                            │
 └─────────────────────────────────────────────────────────────────────────────┘
+                                    │
+                                    ▼
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                    MODULE 3: VECTOR DATABASES                              │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                            │
+│  ┌──────────────┐   ┌──────────────┐   ┌──────────────┐   ┌──────────────┐  │
+│  │ What is a    │   │ Similarity   │   │ ChromaDB     │   │ CRUD &      │  │
+│  │ Vector DB?   │──►│ Metrics      │──►│ Basics       │──►│ Filtering   │  │
+│  └──────────────┘   └──────────────┘   └──────────────┘   └──────────────┘  │
+│                                                                            │
+└─────────────────────────────────────────────────────────────────────────────┘
 ```
 
 ### Quick Start
@@ -81,14 +108,18 @@ step-into-GenAI/
 1. **New to GenAI?** → Start with `Introduction to Generative AI and Agentic AI/docs/01-what-is-generative-ai.md`
 2. **Know the basics?** → Jump to `Gen AI: Foundation/docs/01-how-llms-work.md`
 3. **Ready to build?** → Go to `Gen AI: Foundation/docs/04-genai-tech-stack.md`
+4. **Learning Vector DBs?** → Start with `Gen AI: Vector Database/docs/01-what-is-vector-database.md`
 
 ---
 
 ## 📓 Notebooks Overview
 
-| Notebook                                        | Module     | What You'll Learn                                       |
-| ----------------------------------------------- | ---------- | ------------------------------------------------------- |
-| `Gen AI: Foundation/notebooks/key_params.ipynb` | Foundation | Explore temperature, top-k, top-p effects on LLM output |
+| Notebook                                        | Module          | What You'll Learn                                       |
+| ----------------------------------------------- | --------------- | ------------------------------------------------------- |
+| `Gen AI: Foundation/notebooks/key_params.ipynb` | Foundation      | Explore temperature, top-k, top-p effects on LLM output |
+| `Gen AI: Vector Database/notebooks/1_chromadb_basics.ipynb` | Vector Database | ChromaDB setup, collections, basic queries |
+| `Gen AI: Vector Database/notebooks/2_add_update_delete.ipynb` | Vector Database | CRUD operations in ChromaDB |
+| `Gen AI: Vector Database/notebooks/3_metadata_filtering.ipynb` | Vector Database | Advanced filtering and querying |
 
 ---
 
@@ -170,6 +201,22 @@ Technical deep-dive into how GenAI systems work:
 | [05-app-development-lifecycle.md](Gen%20AI%3A%20Foundation/docs/05-app-development-lifecycle.md) | Evaluation, deployment, monitoring                      |
 | [key_params.ipynb](Gen%20AI%3A%20Foundation/notebooks/key_params.ipynb)                          | 📓 Interactive LLM parameter exploration                |
 
+### 3. Gen AI: Vector Database
+
+Comprehensive guide to vector databases for AI applications:
+
+| Document                                                                                         | Description                                             |
+| ------------------------------------------------------------------------------------------------ | ------------------------------------------------------- |
+| [01-what-is-vector-database.md](Gen%20AI%3A%20Vector%20Database/docs/01-what-is-vector-database.md) | Vector DB fundamentals, embeddings, semantic search |
+| [02-similarity-metrics.md](Gen%20AI%3A%20Vector%20Database/docs/02-similarity-metrics.md)        | Euclidean, Cosine, Dot product metrics                  |
+| [03-popular-vector-databases.md](Gen%20AI%3A%20Vector%20Database/docs/03-popular-vector-databases.md) | ChromaDB, Pinecone, Milvus, Qdrant comparison      |
+| [04-chromadb-basics.md](Gen%20AI%3A%20Vector%20Database/docs/04-chromadb-basics.md)              | Getting started with ChromaDB                           |
+| [05-crud-operations.md](Gen%20AI%3A%20Vector%20Database/docs/05-crud-operations.md)              | Create, Read, Update, Delete operations                 |
+| [06-metadata-filtering.md](Gen%20AI%3A%20Vector%20Database/docs/06-metadata-filtering.md)        | Advanced querying and filtering                         |
+| [1_chromadb_basics.ipynb](Gen%20AI%3A%20Vector%20Database/notebooks/1_chromadb_basics.ipynb)     | 📓 ChromaDB fundamentals notebook                       |
+| [2_add_update_delete.ipynb](Gen%20AI%3A%20Vector%20Database/notebooks/2_add_update_delete.ipynb) | 📓 CRUD operations notebook                             |
+| [3_metadata_filtering.ipynb](Gen%20AI%3A%20Vector%20Database/notebooks/3_metadata_filtering.ipynb) | 📓 Advanced filtering notebook                        |
+
 ---
 
 ## 🗺️ Content Roadmap
@@ -193,6 +240,16 @@ Technical deep-dive into how GenAI systems work:
 - [x] GenAI Tech Stack
 - [x] App Development Lifecycle
 - [x] Key Parameters Notebook
+
+**Module 3: Gen AI Vector Database**
+
+- [x] What is a Vector Database?
+- [x] Similarity Metrics
+- [x] Popular Vector Databases
+- [x] ChromaDB Basics
+- [x] CRUD Operations
+- [x] Metadata Filtering
+- [x] ChromaDB Notebooks
 
 ---
 
@@ -237,6 +294,12 @@ Technical deep-dive into how GenAI systems work:
 │  ├── Top-k         → Limit to k most probable tokens           │
 │  ├── Top-p         → Sample from cumulative probability p      │
 │  └── Context       → Model's memory (4K to 1M+ tokens)         │
+│                                                                │
+│  VECTOR DATABASES:                                             │
+│  ├── Embeddings    → Numerical representations of data         │
+│  ├── Similarity    → Cosine (text), Euclidean (images)         │
+│  ├── Databases     → ChromaDB, Pinecone, Milvus, Qdrant        │
+│  └── Operations    → Add, Query, Update, Delete, Filter        │
 │                                                                │
 │  RAG PIPELINE:                                                 │
 │  Query → Embed → Vector Search → Retrieve → Augment → Generate │

@@ -1,0 +1,9 @@
+# Core app deps
+streamlit
+pandas
+python-dotenv
+
+# LLM / extraction
+langchain-groq
+langchain-core
+pydantic

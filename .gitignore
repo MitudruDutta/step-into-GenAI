@@ -1,0 +1,48 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyd
+*.pyo
+*.so
+*.egg-info/
+dist/
+build/
+.eggs/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Env files / secrets
+.env
+.env.*
+*.env
+.streamlit/secrets.toml
+
+# Streamlit
+.streamlit/*.toml
+!.streamlit/config.toml
+
+# Jupyter
+.ipynb_checkpoints/
+
+# OS / editor
+.DS_Store
+.idea/
+.vscode/
+
+# Logs
+*.log
+
+# Local data
+*.csv
+*.parquet
+*.sqlite
+*.db
+chromadb_data
