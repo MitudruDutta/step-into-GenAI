@@ -17,20 +17,27 @@ EXAMPLE_TEXT = (
 )
 
 
-def _make_table(extracted_data: dict[str, Any]) -> pd.DataFrame:
-    return pd.DataFrame(
-        {
-            "Measure": ["Revenue", "EPS"],
-            "Estimated": [
-                extracted_data.get("revenue_expected", ""),
-                extracted_data.get("eps_expected", ""),
-            ],
-            "Actual": [
-                extracted_data.get("revenue_actual", ""),
-                extracted_data.get("eps_actual", ""),
-            ],
-        }
-    )
+def _make_table(extracted_data: list[dict[str, Any]]) -> pd.DataFrame:
+    rows: list[dict[str, str]] = []
+    for item in extracted_data:
+        company = item.get("company", "")
+        rows.append(
+            {
+                "Company": company,
+                "Measure": "Revenue",
+                "Estimated": item.get("revenue_expected", ""),
+                "Actual": item.get("revenue_actual", ""),
+            }
+        )
+        rows.append(
+            {
+                "Company": company,
+                "Measure": "EPS",
+                "Estimated": item.get("eps_expected", ""),
+                "Actual": item.get("eps_actual", ""),
+            }
+        )
+    return pd.DataFrame(rows)
 
 
 def _append_history(paragraph: str, result: dict[str, Any]) -> None:
@@ -130,7 +137,8 @@ if extract_clicked:
             _append_history(paragraph, result)
 
             st.subheader("Result")
-            df = _make_table(result)
+            companies = result["companies"] if show_raw else result
+            df = _make_table(companies)
             st.table(df)
 
             csv_bytes = df.to_csv(index=False).encode("utf-8")

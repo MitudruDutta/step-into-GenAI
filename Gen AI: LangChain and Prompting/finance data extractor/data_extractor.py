@@ -14,7 +14,8 @@ from pydantic import BaseModel, Field, ValidationError
 load_dotenv()
 
 
-class FinancialExtraction(BaseModel):
+class FinancialCompany(BaseModel):
+    company: str = Field(..., description="Company name")
     revenue_actual: str = Field(..., description="Actual revenue with unit, e.g. '12.3 billion USD'")
     revenue_expected: str = Field(
         ..., description="Expected/estimated revenue with unit, e.g. '11.9 billion USD'"
@@ -90,15 +91,32 @@ def _extract_json_object(text: str) -> dict[str, Any]:
         raise OutputParserException(f"Invalid JSON returned by model: {e}")
 
 
-def _coerce_to_schema(payload: dict[str, Any]) -> dict[str, str]:
-    try:
-        extracted = FinancialExtraction.model_validate(payload)
-    except ValidationError as e:
+def _coerce_to_schema(payload: Any) -> list[dict[str, str]]:
+    if not isinstance(payload, list):
         raise OutputParserException(
-            "JSON missing required keys or wrong types. "
-            f"Expected keys: revenue_actual, revenue_expected, eps_actual, eps_expected. Details: {e}"
+            "Expected a JSON array of company objects."
         )
-    return extracted.model_dump()
+
+    validated: list[dict[str, str]] = []
+    errors: list[str] = []
+    for idx, item in enumerate(payload):
+        try:
+            entry = FinancialCompany.model_validate(item)
+            validated.append(entry.model_dump())
+        except ValidationError as e:
+            errors.append(f"index {idx}: {e}")
+
+    if errors:
+        raise OutputParserException(
+            "One or more company entries are invalid. "
+            "Each entry must include company, revenue_actual, revenue_expected, eps_actual, eps_expected. "
+            + " | ".join(errors)
+        )
+
+    if not validated:
+        raise OutputParserException("No valid company entries found in JSON array.")
+
+    return validated
 
 
 def extract(
@@ -106,17 +124,17 @@ def extract(
     *,
     model_name: str = "llama-3.3-70b-versatile",
     temperature: float = 0.0,
-    max_tokens: int | None = 256,
+    max_tokens: int | None = 512,
     timeout: float = 30.0,
     max_retries: int = 2,
     currency_hint: str | None = None,
     return_mode: Literal["dict", "raw"] = "dict",
-) -> dict[str, Any]:
-    """Extract revenue/EPS actual vs expected from a paragraph.
+) -> list[dict[str, Any]]:
+    """Extract revenue/EPS actual vs expected for one or more companies.
 
     return_mode:
-      - "dict": returns validated keys as strings
-      - "raw":  returns extra debug fields (payload, model_text)
+      - "dict": returns a list of company dicts
+      - "raw":  returns list plus debug fields
     """
     if not article_text or not article_text.strip():
         raise ValueError("article_text is empty")
@@ -130,9 +148,10 @@ def extract(
     )
 
     schema_note = (
-        "Return ONLY a JSON object with exactly these keys: "
-        "revenue_actual, revenue_expected, eps_actual, eps_expected. "
-        "Each value must be a string that includes units (million/billion) and currency if present."
+        "Return ONLY a JSON array. Each element is an object with exactly these keys: "
+        "company, revenue_actual, revenue_expected, eps_actual, eps_expected. "
+        "All values are strings that include units (million/billion) and currency if present. "
+        "Do not invent companies; only return companies explicitly in the article."
     )
     if currency_hint:
         schema_note += f" Prefer currency/format consistent with: {currency_hint}."
@@ -141,11 +160,11 @@ def extract(
 You are a precise information extractor.
 
 TASK
-Extract revenue and EPS (actual vs expected/estimated) from the article.
+Extract revenue and EPS (actual vs expected/estimated) for every company mentioned in the article.
 
 OUTPUT RULES
 {schema_note}
-No markdown. No code fences. No extra keys. No explanations.
+No markdown. No code fences. No extra keys. No explanations. Output must be valid JSON.
 
 ARTICLE
 =======
@@ -164,7 +183,7 @@ ARTICLE
 
     if return_mode == "raw":
         return {
-            **validated,
+            "companies": validated,
             "_debug": {
                 "config": asdict(config),
                 "payload": payload,
