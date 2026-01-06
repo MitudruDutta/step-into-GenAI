@@ -46,3 +46,4 @@ env/
 *.sqlite
 *.db
 chromadb_data
+Images/

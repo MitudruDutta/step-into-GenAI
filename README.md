@@ -16,6 +16,7 @@ A structured, hands-on learning repository for mastering Generative AI fundament
 | Introduction to Generative AI and Agentic AI | GenAI fundamentals, Text/Image/Audio/Video models, Agentic AI                | ⭐ Beginner       |
 | Gen AI: Foundation                           | LLM internals, Model parameters, Vector DBs & RAG, Tech stack, App lifecycle | ⭐⭐ Intermediate |
 | Gen AI: Vector Database                      | Vector DBs, Embeddings, Similarity metrics, ChromaDB, CRUD, Filtering        | ⭐⭐ Intermediate |
+| Agentic AI: Basics                           | AI Agents, Tools, Reasoning models, Multimodal agents, Agno framework        | ⭐⭐ Intermediate |
 
 ---
 
@@ -58,6 +59,21 @@ step-into-GenAI/
 │       ├── 1_chromadb_basics.ipynb        # 📓 ChromaDB fundamentals
 │       ├── 2_add_update_delete.ipynb      # 📓 CRUD operations
 │       └── 3_metadata_filtering.ipynb     # 📓 Advanced filtering
+│
+├── 🤖 Agentic AI: Basics/
+│   ├── README.md                      # Module index
+│   ├── docs/
+│   │   ├── 01-basic-agent.md              # Agent fundamentals, LLM + Tools
+│   │   ├── 02-agent-with-tools.md         # Custom tools, docstrings, YFinance
+│   │   ├── 03-reasoning-agent-basic.md    # Reasoning models, chain-of-thought
+│   │   ├── 04-reasoning-agent-tools.md    # Reasoning + tools combination
+│   │   └── 05-multimodal-agent.md         # Image processing, structured output
+│   └── agents/
+│       ├── basic_agent.py                 # Basic web search agent
+│       ├── agent_with_tools.py            # Finance agent with tools
+│       ├── agent_reasoning_1.py           # Basic reasoning agent
+│       ├── agent_reasoning_2.py           # Reasoning with tools
+│       └── categorize.py                  # Multimodal image categorization
 │
 └── README.md                          # You are here
 ```
@@ -109,17 +125,18 @@ step-into-GenAI/
 2. **Know the basics?** → Jump to `Gen AI: Foundation/docs/01-how-llms-work.md`
 3. **Ready to build?** → Go to `Gen AI: Foundation/docs/04-genai-tech-stack.md`
 4. **Learning Vector DBs?** → Start with `Gen AI: Vector Database/docs/01-what-is-vector-database.md`
+5. **Building Agents?** → Go to `Agentic AI: Basics/docs/01-basic-agent.md`
 
 ---
 
 ## 📓 Notebooks Overview
 
-| Notebook                                        | Module          | What You'll Learn                                       |
-| ----------------------------------------------- | --------------- | ------------------------------------------------------- |
-| `Gen AI: Foundation/notebooks/key_params.ipynb` | Foundation      | Explore temperature, top-k, top-p effects on LLM output |
-| `Gen AI: Vector Database/notebooks/1_chromadb_basics.ipynb` | Vector Database | ChromaDB setup, collections, basic queries |
-| `Gen AI: Vector Database/notebooks/2_add_update_delete.ipynb` | Vector Database | CRUD operations in ChromaDB |
-| `Gen AI: Vector Database/notebooks/3_metadata_filtering.ipynb` | Vector Database | Advanced filtering and querying |
+| Notebook                                                       | Module          | What You'll Learn                                       |
+| -------------------------------------------------------------- | --------------- | ------------------------------------------------------- |
+| `Gen AI: Foundation/notebooks/key_params.ipynb`                | Foundation      | Explore temperature, top-k, top-p effects on LLM output |
+| `Gen AI: Vector Database/notebooks/1_chromadb_basics.ipynb`    | Vector Database | ChromaDB setup, collections, basic queries              |
+| `Gen AI: Vector Database/notebooks/2_add_update_delete.ipynb`  | Vector Database | CRUD operations in ChromaDB                             |
+| `Gen AI: Vector Database/notebooks/3_metadata_filtering.ipynb` | Vector Database | Advanced filtering and querying                         |
 
 ---
 
@@ -205,17 +222,29 @@ Technical deep-dive into how GenAI systems work:
 
 Comprehensive guide to vector databases for AI applications:
 
-| Document                                                                                         | Description                                             |
-| ------------------------------------------------------------------------------------------------ | ------------------------------------------------------- |
-| [01-what-is-vector-database.md](Gen%20AI%3A%20Vector%20Database/docs/01-what-is-vector-database.md) | Vector DB fundamentals, embeddings, semantic search |
-| [02-similarity-metrics.md](Gen%20AI%3A%20Vector%20Database/docs/02-similarity-metrics.md)        | Euclidean, Cosine, Dot product metrics                  |
-| [03-popular-vector-databases.md](Gen%20AI%3A%20Vector%20Database/docs/03-popular-vector-databases.md) | ChromaDB, Pinecone, Milvus, Qdrant comparison      |
-| [04-chromadb-basics.md](Gen%20AI%3A%20Vector%20Database/docs/04-chromadb-basics.md)              | Getting started with ChromaDB                           |
-| [05-crud-operations.md](Gen%20AI%3A%20Vector%20Database/docs/05-crud-operations.md)              | Create, Read, Update, Delete operations                 |
-| [06-metadata-filtering.md](Gen%20AI%3A%20Vector%20Database/docs/06-metadata-filtering.md)        | Advanced querying and filtering                         |
-| [1_chromadb_basics.ipynb](Gen%20AI%3A%20Vector%20Database/notebooks/1_chromadb_basics.ipynb)     | 📓 ChromaDB fundamentals notebook                       |
-| [2_add_update_delete.ipynb](Gen%20AI%3A%20Vector%20Database/notebooks/2_add_update_delete.ipynb) | 📓 CRUD operations notebook                             |
-| [3_metadata_filtering.ipynb](Gen%20AI%3A%20Vector%20Database/notebooks/3_metadata_filtering.ipynb) | 📓 Advanced filtering notebook                        |
+| Document                                                                                              | Description                                         |
+| ----------------------------------------------------------------------------------------------------- | --------------------------------------------------- |
+| [01-what-is-vector-database.md](Gen%20AI%3A%20Vector%20Database/docs/01-what-is-vector-database.md)   | Vector DB fundamentals, embeddings, semantic search |
+| [02-similarity-metrics.md](Gen%20AI%3A%20Vector%20Database/docs/02-similarity-metrics.md)             | Euclidean, Cosine, Dot product metrics              |
+| [03-popular-vector-databases.md](Gen%20AI%3A%20Vector%20Database/docs/03-popular-vector-databases.md) | ChromaDB, Pinecone, Milvus, Qdrant comparison       |
+| [04-chromadb-basics.md](Gen%20AI%3A%20Vector%20Database/docs/04-chromadb-basics.md)                   | Getting started with ChromaDB                       |
+| [05-crud-operations.md](Gen%20AI%3A%20Vector%20Database/docs/05-crud-operations.md)                   | Create, Read, Update, Delete operations             |
+| [06-metadata-filtering.md](Gen%20AI%3A%20Vector%20Database/docs/06-metadata-filtering.md)             | Advanced querying and filtering                     |
+| [1_chromadb_basics.ipynb](Gen%20AI%3A%20Vector%20Database/notebooks/1_chromadb_basics.ipynb)          | 📓 ChromaDB fundamentals notebook                   |
+| [2_add_update_delete.ipynb](Gen%20AI%3A%20Vector%20Database/notebooks/2_add_update_delete.ipynb)      | 📓 CRUD operations notebook                         |
+| [3_metadata_filtering.ipynb](Gen%20AI%3A%20Vector%20Database/notebooks/3_metadata_filtering.ipynb)    | 📓 Advanced filtering notebook                      |
+
+### 4. Agentic AI: Basics
+
+Hands-on exploration of AI agents with the Agno framework:
+
+| Document                                                                                 | Description                                              |
+| ---------------------------------------------------------------------------------------- | -------------------------------------------------------- |
+| [01-basic-agent.md](Agentic%20AI%3A%20Basics/docs/01-basic-agent.md)                     | Agent fundamentals, LLM + Tools + Instructions           |
+| [02-agent-with-tools.md](Agentic%20AI%3A%20Basics/docs/02-agent-with-tools.md)           | Custom tools, docstrings, tool selection                 |
+| [03-reasoning-agent-basic.md](Agentic%20AI%3A%20Basics/docs/03-reasoning-agent-basic.md) | Reasoning models, chain-of-thought, specialized training |
+| [04-reasoning-agent-tools.md](Agentic%20AI%3A%20Basics/docs/04-reasoning-agent-tools.md) | Reasoning + tools synergy, analytical workflows          |
+| [05-multimodal-agent.md](Agentic%20AI%3A%20Basics/docs/05-multimodal-agent.md)           | Image processing, structured output, validation          |
 
 ---
 
@@ -250,6 +279,14 @@ Comprehensive guide to vector databases for AI applications:
 - [x] CRUD Operations
 - [x] Metadata Filtering
 - [x] ChromaDB Notebooks
+
+**Module 4: Agentic AI Basics**
+
+- [x] Basic Agent with Web Search
+- [x] Agent with Custom Tools
+- [x] Reasoning Agent (Basic)
+- [x] Reasoning Agent with Tools
+- [x] Multimodal Agent (Image Categorization)
 
 ---
 
@@ -305,10 +342,16 @@ Comprehensive guide to vector databases for AI applications:
 │  Query → Embed → Vector Search → Retrieve → Augment → Generate │
 │                                                                │
 │  TECH STACK:                                                   │
-│  ├── Frameworks    → LangChain, LlamaIndex, Semantic Kernel    │
+│  ├── Frameworks    → LangChain, LlamaIndex, Agno, Semantic Kernel│
 │  ├── Vector DBs    → Pinecone, ChromaDB, Qdrant, Milvus        │
-│  ├── Platforms     → AWS Bedrock, Azure OpenAI, Google AI      │
+│  ├── Platforms     → AWS Bedrock, Azure OpenAI, Google AI, Groq│
 │  └── Models        → GPT-4, Claude 3, Gemini, Llama 3          │
+│                                                                │
+│  AGENTIC AI:                                                   │
+│  ├── Agency        → Perceive, Decide, Act, Synthesize         │
+│  ├── Tools         → Custom functions, APIs, integrations      │
+│  ├── Reasoning     → Chain-of-thought, multi-step analysis     │
+│  └── Multimodal    → Text + Images + Structured output         │
 │                                                                │
 └─────────────────────────────────────────────────────────────────┘
 ```
