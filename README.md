@@ -152,7 +152,7 @@ step-into-GenAI/
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/step-into-GenAI.git
+git clone https://github.com/MitudruDutta/step-into-GenAI.git
 cd step-into-GenAI
 
 # Create virtual environment (recommended)
