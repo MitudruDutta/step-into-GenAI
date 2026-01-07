@@ -204,18 +204,34 @@ pip install -r requirements.txt
 
 ### Core Dependencies
 
-| Package          | Purpose                          |
-| ---------------- | -------------------------------- |
-| openai           | OpenAI API access                |
-| langchain        | LLM application framework        |
-| langchain-openai | OpenAI integration for LangChain |
-| chromadb         | Vector database                  |
-| transformers     | HuggingFace models               |
-| torch            | Deep learning framework          |
-| numpy            | Numerical computing              |
-| pandas           | Data manipulation                |
-| matplotlib       | Visualization                    |
-| jupyter          | Interactive notebooks            |
+| Package              | Purpose                          |
+| -------------------- | -------------------------------- |
+| streamlit            | Web app framework                |
+| langchain-groq       | Groq LLM integration             |
+| langchain-core       | LangChain core components        |
+| pydantic             | Data validation                  |
+| agno                 | Agentic AI framework             |
+| chromadb             | Vector database                  |
+| sentence-transformers| Embedding models                 |
+| mcp                  | Model Context Protocol           |
+| python-dotenv        | Environment variables            |
+| pandas               | Data manipulation                |
+
+### MCP Server Setup (Optional)
+
+For the MCP server examples, you'll need `uv` package manager:
+
+```bash
+# Install uv (if not already installed)
+curl -LsSf https://astral.sh/uv/install.sh | sh
+
+# Navigate to MCP server
+cd "Agentic AI: Architecture and MCP/mcp-server"
+
+# Install and run
+uv sync
+uv run main.py
+```
 
 ### Verify Installation
 

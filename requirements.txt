@@ -17,3 +17,14 @@ google-generativeai
 
 # Vector Database
 chromadb
+sentence-transformers
+
+# MCP (Model Context Protocol)
+mcp
+
+# Evaluation & Testing
+rouge-score
+nltk
+
+# Utilities
+requests

@@ -39,11 +39,25 @@ env/
 
 # Logs
 *.log
+*.jsonl
 
 # Local data
 *.csv
 *.parquet
 *.sqlite
 *.db
-chromadb_data
+chromadb_data/
+
+# MCP Server
+mcp-server/.venv/
+mcp-server/uv.lock
+leave_management.db
+mcp_debug.log
+agent_metrics.jsonl
+
+# Images (sample data)
 Images/
+
+# Model cache
+.cache/
+models/
