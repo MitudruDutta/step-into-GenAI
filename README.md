@@ -11,12 +11,15 @@ A structured, hands-on learning repository for mastering Generative AI fundament
 
 ## 🎯 What You'll Learn
 
-| Module                                       | Topics                                                                       | Difficulty        |
-| -------------------------------------------- | ---------------------------------------------------------------------------- | ----------------- |
-| Introduction to Generative AI and Agentic AI | GenAI fundamentals, Text/Image/Audio/Video models, Agentic AI                | ⭐ Beginner       |
-| Gen AI: Foundation                           | LLM internals, Model parameters, Vector DBs & RAG, Tech stack, App lifecycle | ⭐⭐ Intermediate |
-| Gen AI: Vector Database                      | Vector DBs, Embeddings, Similarity metrics, ChromaDB, CRUD, Filtering        | ⭐⭐ Intermediate |
-| Agentic AI: Basics                           | AI Agents, Tools, Reasoning models, Multimodal agents, Agno framework        | ⭐⭐ Intermediate |
+| Module                                       | Topics                                                                       | Difficulty         |
+| -------------------------------------------- | ---------------------------------------------------------------------------- | ------------------ |
+| Introduction to Generative AI and Agentic AI | GenAI fundamentals, Text/Image/Audio/Video models, Agentic AI                | ⭐ Beginner        |
+| Gen AI: Foundation                           | LLM internals, Model parameters, Vector DBs & RAG, Tech stack, App lifecycle | ⭐⭐ Intermediate  |
+| Gen AI: Vector Database                      | Vector DBs, Embeddings, Similarity metrics, ChromaDB, CRUD, Filtering        | ⭐⭐ Intermediate  |
+| Agentic AI: Basics                           | AI Agents, Tools, Reasoning models, Multimodal agents, Agno framework        | ⭐⭐ Intermediate  |
+| Agentic AI: Architecture and MCP             | Agent architecture, MCP protocol, Building MCP servers, Integration patterns | ⭐⭐⭐ Advanced    |
+| Agentic AI: Multi Agent System               | Multi-agent patterns, Coordinator teams, Router teams, Agent communication   | ⭐⭐⭐ Advanced    |
+| Agentic AI: Evaluation                       | Functional, Safety, Operational evaluation, Metrics, Guardrails              | ⭐⭐⭐ Advanced    |
 
 ---
 
@@ -75,6 +78,40 @@ step-into-GenAI/
 │       ├── agent_reasoning_2.py           # Reasoning with tools
 │       └── categorize.py                  # Multimodal image categorization
 │
+├── 🏗️ Agentic AI: Architecture and MCP/
+│   ├── README.md                      # Module index
+│   ├── docs/
+│   │   ├── 01-agentic-architecture.md     # Layered architecture, memory systems
+│   │   ├── 02-introduction-to-mcp.md      # MCP fundamentals, USB-C analogy
+│   │   ├── 03-mcp-primitives.md           # Tools, Resources, Prompts
+│   │   ├── 04-building-mcp-servers.md     # FastMCP, server development
+│   │   └── 05-mcp-integration.md          # Integration patterns, security
+│   └── mcp-server/
+│       ├── README.md                      # MCP server documentation
+│       ├── main.py                        # Leave Management MCP Server
+│       └── pyproject.toml                 # Project configuration
+│
+├── 🤝 Agentic AI: Multi Agent System/
+│   ├── README.md                      # Module index
+│   ├── docs/
+│   │   ├── 01-coordinator-team.md         # Coordinator pattern, parallel agents
+│   │   ├── 02-router-team.md              # Router pattern, query classification
+│   │   └── 03-multi-agent-architecture.md # Architecture patterns, scaling
+│   └── agents/
+│       ├── multi_agents_agno.py           # Coordinator team example
+│       └── router_agent.py                # Router team example
+│
+├── 🧪 Agentic AI: Evaluation/
+│   ├── README.md                      # Module index
+│   ├── docs/
+│   │   ├── 01-functional-evaluation.md    # Accuracy, metrics, LLM-as-judge
+│   │   ├── 02-safety-evaluation.md        # Jailbreaks, guardrails, hallucinations
+│   │   └── 03-operational-evaluation.md   # Performance, monitoring, logging
+│   └── agents/
+│       ├── inventory_agent.py             # Sample agent for evaluation
+│       ├── agent_eval.py                  # Accuracy evaluation example
+│       └── perf_eval.py                   # Performance evaluation example
+│
 └── README.md                          # You are here
 ```
 
@@ -126,6 +163,7 @@ step-into-GenAI/
 3. **Ready to build?** → Go to `Gen AI: Foundation/docs/04-genai-tech-stack.md`
 4. **Learning Vector DBs?** → Start with `Gen AI: Vector Database/docs/01-what-is-vector-database.md`
 5. **Building Agents?** → Go to `Agentic AI: Basics/docs/01-basic-agent.md`
+6. **Learning MCP?** → Go to `Agentic AI: Architecture and MCP/docs/02-introduction-to-mcp.md`
 
 ---
 
@@ -246,6 +284,39 @@ Hands-on exploration of AI agents with the Agno framework:
 | [04-reasoning-agent-tools.md](Agentic%20AI%3A%20Basics/docs/04-reasoning-agent-tools.md) | Reasoning + tools synergy, analytical workflows          |
 | [05-multimodal-agent.md](Agentic%20AI%3A%20Basics/docs/05-multimodal-agent.md)           | Image processing, structured output, validation          |
 
+### 5. Agentic AI: Architecture and MCP
+
+Advanced exploration of agent architecture and the Model Context Protocol:
+
+| Document                                                                                                         | Description                                              |
+| ---------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------- |
+| [01-agentic-architecture.md](Agentic%20AI%3A%20Architecture%20and%20MCP/docs/01-agentic-architecture.md)         | Layered architecture, memory systems, execution patterns |
+| [02-introduction-to-mcp.md](Agentic%20AI%3A%20Architecture%20and%20MCP/docs/02-introduction-to-mcp.md)           | MCP fundamentals, USB-C analogy, protocol overview       |
+| [03-mcp-primitives.md](Agentic%20AI%3A%20Architecture%20and%20MCP/docs/03-mcp-primitives.md)                     | Tools, Resources, Prompts — the building blocks          |
+| [04-building-mcp-servers.md](Agentic%20AI%3A%20Architecture%20and%20MCP/docs/04-building-mcp-servers.md)         | FastMCP framework, hands-on server development           |
+| [05-mcp-integration.md](Agentic%20AI%3A%20Architecture%20and%20MCP/docs/05-mcp-integration.md)                   | Integration patterns, security, multi-server setups      |
+| [mcp-server/README.md](Agentic%20AI%3A%20Architecture%20and%20MCP/mcp-server/README.md)                          | Leave Management MCP Server documentation                |
+
+### 6. Agentic AI: Multi Agent System
+
+Building multi-agent systems with coordinator and router patterns:
+
+| Document                                                                                                         | Description                                              |
+| ---------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------- |
+| [01-coordinator-team.md](Agentic%20AI%3A%20Multi%20Agent%20System/docs/01-coordinator-team.md)                   | Coordinator pattern, parallel agent execution            |
+| [02-router-team.md](Agentic%20AI%3A%20Multi%20Agent%20System/docs/02-router-team.md)                             | Router pattern, query classification and routing         |
+| [03-multi-agent-architecture.md](Agentic%20AI%3A%20Multi%20Agent%20System/docs/03-multi-agent-architecture.md)   | Architecture patterns, scaling, communication strategies |
+
+### 7. Agentic AI: Evaluation
+
+Comprehensive evaluation strategies for AI agents:
+
+| Document                                                                                                         | Description                                              |
+| ---------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------- |
+| [01-functional-evaluation.md](Agentic%20AI%3A%20Evaluation/docs/01-functional-evaluation.md)                     | Accuracy, metrics, LLM-as-judge evaluation               |
+| [02-safety-evaluation.md](Agentic%20AI%3A%20Evaluation/docs/02-safety-evaluation.md)                             | Jailbreaks, guardrails, hallucination detection          |
+| [03-operational-evaluation.md](Agentic%20AI%3A%20Evaluation/docs/03-operational-evaluation.md)                   | Performance, monitoring, logging, alerting               |
+
 ---
 
 ## 🗺️ Content Roadmap
@@ -287,6 +358,27 @@ Hands-on exploration of AI agents with the Agno framework:
 - [x] Reasoning Agent (Basic)
 - [x] Reasoning Agent with Tools
 - [x] Multimodal Agent (Image Categorization)
+
+**Module 5: Agentic AI Architecture and MCP**
+
+- [x] Agentic Architecture Patterns
+- [x] Introduction to MCP
+- [x] MCP Server Primitives
+- [x] Building MCP Servers
+- [x] MCP Integration Patterns
+- [x] Leave Management MCP Server
+
+**Module 6: Agentic AI Multi Agent System**
+
+- [x] Coordinator Team Pattern
+- [x] Router Team Pattern
+- [x] Multi-Agent Architecture Patterns
+
+**Module 7: Agentic AI Evaluation**
+
+- [x] Functional Evaluation (Accuracy, Metrics)
+- [x] Safety Evaluation (Jailbreaks, Guardrails)
+- [x] Operational Evaluation (Performance, Monitoring)
 
 ---
 
