@@ -20,6 +20,8 @@ A structured, hands-on learning repository for mastering Generative AI fundament
 | Agentic AI: Architecture and MCP             | Agent architecture, MCP protocol, Building MCP servers, Integration patterns | ⭐⭐⭐ Advanced    |
 | Agentic AI: Multi Agent System               | Multi-agent patterns, Coordinator teams, Router teams, Agent communication   | ⭐⭐⭐ Advanced    |
 | Agentic AI: Evaluation                       | Functional, Safety, Operational evaluation, Metrics, Guardrails              | ⭐⭐⭐ Advanced    |
+| Fine Tuning                                  | Quantization (int8, NF4), LoRA, QLoRA, Unsloth, Model export                 | ⭐⭐⭐ Advanced    |
+| Ethics in Gen AI                             | Bias, Privacy, Hallucinations, Safety, IP, Environment, Governance           | ⭐⭐⭐ Advanced    |
 
 ---
 
@@ -112,6 +114,43 @@ step-into-GenAI/
 │       ├── agent_eval.py                  # Accuracy evaluation example
 │       └── perf_eval.py                   # Performance evaluation example
 │
+├── 🔧 Fine Tuning/
+│   ├── README.md                      # Module index
+│   ├── docs/
+│   │   ├── 01-quantization-basics.md      # int8 and NF4 quantization
+│   │   └── 02-finetuning-with-unsloth.md  # LoRA, QLoRA, Unsloth workflow
+│   └── notebooks/
+│       ├── quantization_basics.ipynb      # 📓 Quantization implementation
+│       └── unsloth_finetuning.ipynb       # 📓 Fine-tuning Llama with Unsloth
+│
+├── ⚖️ Ethics in Gen AI/
+│   ├── README.md                      # Module index
+│   ├── docs/
+│   │   ├── 01-bias-and-fairness.md        # Bias types, detection, mitigation
+│   │   ├── 02-privacy-and-data-protection.md # PII, GDPR, differential privacy
+│   │   ├── 03-hallucinations-and-misinformation.md # RAG, fact-checking
+│   │   ├── 04-transparency-and-explainability.md # Model cards, XAI
+│   │   ├── 05-content-moderation-and-safety.md # Guardrails, jailbreaks
+│   │   ├── 06-intellectual-property-and-copyright.md # Fair use, licensing
+│   │   ├── 07-environmental-impact-and-sustainability.md # Carbon footprint
+│   │   └── 08-responsible-deployment-and-governance.md # Risk assessment
+│   ├── biases/
+│   │   ├── bias.py                        # Bias detection implementation
+│   │   └── llm_helper.py                  # LLM helper utilities
+│   ├── PII/
+│   │   └── pii_and_privacy.ipynb          # 📓 PII detection and privacy
+│   └── hallucination and misinformation/
+│       ├── README.md                      # Setup and usage guide
+│       ├── airline_chatbot.py             # RAG-based airline chatbot
+│       ├── airline_faq.csv                # FAQ dataset (see README)
+│       ├── ingest_data.py                 # Data ingestion for vector DB
+│       ├── similarity_checker.py          # Check output similarity
+│       ├── test_adversarial.py            # Adversarial testing
+│       ├── test_functional.py             # Functional testing
+│       └── test_files/
+│           ├── test_adversarial.csv       # Adversarial test cases
+│           └── test_functional.csv        # Functional test cases
+│
 └── README.md                          # You are here
 ```
 
@@ -175,6 +214,9 @@ step-into-GenAI/
 | `Gen AI: Vector Database/notebooks/1_chromadb_basics.ipynb`    | Vector Database | ChromaDB setup, collections, basic queries              |
 | `Gen AI: Vector Database/notebooks/2_add_update_delete.ipynb`  | Vector Database | CRUD operations in ChromaDB                             |
 | `Gen AI: Vector Database/notebooks/3_metadata_filtering.ipynb` | Vector Database | Advanced filtering and querying                         |
+| `Fine Tuning/notebooks/quantization_basics.ipynb`              | Fine Tuning     | int8 and NF4 quantization implementation                |
+| `Fine Tuning/notebooks/unsloth_finetuning.ipynb`               | Fine Tuning     | Fine-tuning Llama 3.2 with Unsloth and LoRA             |
+| `Ethics in Gen AI/PII/pii_and_privacy.ipynb`                   | Ethics          | PII detection and privacy-preserving techniques         |
 
 ---
 
@@ -333,6 +375,30 @@ Comprehensive evaluation strategies for AI agents:
 | [02-safety-evaluation.md](Agentic%20AI%3A%20Evaluation/docs/02-safety-evaluation.md)                             | Jailbreaks, guardrails, hallucination detection          |
 | [03-operational-evaluation.md](Agentic%20AI%3A%20Evaluation/docs/03-operational-evaluation.md)                   | Performance, monitoring, logging, alerting               |
 
+### 8. Fine Tuning
+
+Model fine-tuning techniques from quantization to practical training:
+
+| Document                                                                                                         | Description                                              |
+| ---------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------- |
+| [01-quantization-basics.md](Fine%20Tuning/docs/01-quantization-basics.md)                                        | int8 and NF4 quantization fundamentals                   |
+| [02-finetuning-with-unsloth.md](Fine%20Tuning/docs/02-finetuning-with-unsloth.md)                                 | LoRA, QLoRA, Unsloth workflow, model export              |
+
+### 9. Ethics in Gen AI
+
+Comprehensive guide to ethical considerations in Generative AI:
+
+| Document                                                                                                         | Description                                              |
+| ---------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------- |
+| [01-bias-and-fairness.md](Ethics%20in%20Gen%20AI/docs/01-bias-and-fairness.md)                                   | Bias types, detection methods, mitigation strategies     |
+| [02-privacy-and-data-protection.md](Ethics%20in%20Gen%20AI/docs/02-privacy-and-data-protection.md)               | PII handling, data anonymization, regulatory compliance  |
+| [03-hallucinations-and-misinformation.md](Ethics%20in%20Gen%20AI/docs/03-hallucinations-and-misinformation.md)   | Understanding model hallucinations, fact-checking, grounding |
+| [04-transparency-and-explainability.md](Ethics%20in%20Gen%20AI/docs/04-transparency-and-explainability.md)       | Model interpretability, documentation, audit trails      |
+| [05-content-moderation-and-safety.md](Ethics%20in%20Gen%20AI/docs/05-content-moderation-and-safety.md)           | Harmful content detection, guardrails, safety filters    |
+| [06-intellectual-property-and-copyright.md](Ethics%20in%20Gen%20AI/docs/06-intellectual-property-and-copyright.md) | Training data rights, generated content ownership, fair use |
+| [07-environmental-impact-and-sustainability.md](Ethics%20in%20Gen%20AI/docs/07-environmental-impact-and-sustainability.md) | Carbon footprint, sustainable AI practices, efficiency |
+| [08-responsible-deployment-and-governance.md](Ethics%20in%20Gen%20AI/docs/08-responsible-deployment-and-governance.md) | Risk assessment, monitoring, incident response |
+
 ---
 
 ## 🗺️ Content Roadmap
@@ -395,6 +461,22 @@ Comprehensive evaluation strategies for AI agents:
 - [x] Functional Evaluation (Accuracy, Metrics)
 - [x] Safety Evaluation (Jailbreaks, Guardrails)
 - [x] Operational Evaluation (Performance, Monitoring)
+
+**Module 8: Fine Tuning**
+
+- [x] Quantization Basics (int8, NF4)
+- [x] Fine-Tuning with Unsloth (LoRA, QLoRA)
+
+**Module 9: Ethics in Gen AI**
+
+- [x] Bias & Fairness
+- [x] Privacy & Data Protection
+- [x] Hallucinations & Misinformation
+- [x] Transparency & Explainability
+- [x] Content Moderation & Safety
+- [x] Intellectual Property & Copyright
+- [x] Environmental Impact & Sustainability
+- [x] Responsible Deployment & Governance
 
 ---
 

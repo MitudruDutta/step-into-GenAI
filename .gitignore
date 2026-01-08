@@ -61,3 +61,6 @@ Images/
 # Model cache
 .cache/
 models/
+
+# Test Files
+test_files/

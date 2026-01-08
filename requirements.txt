@@ -7,6 +7,7 @@ python-dotenv
 langchain-groq
 langchain-core
 langchain-ollama
+langchain-community
 pydantic
 
 # Agentic AI (Agno framework)
@@ -25,6 +26,12 @@ mcp
 # Evaluation & Testing
 rouge-score
 nltk
+
+# Ethics & Safety
+fairlearn
+presidio-analyzer
+presidio-anonymizer
+codecarbon
 
 # Utilities
 requests
